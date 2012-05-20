@@ -1,0 +1,14 @@
+development:
+  host: localhost
+  database: wherefolio_development
+
+test:
+  host: localhost
+  database: wherefolio_test
+
+production:
+  host: localhost
+  username: wherefolio
+  password: secret
+  database: wherefolio_production
+
