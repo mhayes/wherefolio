@@ -9,7 +9,7 @@ default_run_options[:pty] = true
 
 set :application, "wherefolio"
 set :deploy_to, "/var/www/wherefolio"
-set :repository,  ""
+set :repository,  "git@github.com:mhayes/wherefolio.git"
 set :branch, "master"
 
 set :deploy_via, :remote_cache
