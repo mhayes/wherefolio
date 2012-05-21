@@ -1,14 +1,10 @@
-<% if user_signed_in? %>
-  <p><strong>CURRENT USER:</strong>: <%= current_user.twitter_name %></p>
-  <p><%= image_tag current_user.twitter_image %></p>
-<% end %>
-<h1>Index#home</h1>
-<p>Find me in app/views/index/home.html.erb</p>
-
-<% if flash[:alert] %>
-  <p><strong>ALERT</strong>: <%= flash[:alert] %></p>
-<% end %>
-
-<% if flash[:notice] %>
-  <p><strong>NOTICE</strong>: <%= flash[:notice] %></p>
-<% end %>
+<div class="container">
+  <div class="row">
+    <div class="span12">
+      <div class="hero-unit">
+        <h2>wherefolio</h2>
+        <p>your geocoded portfolio</p>
+      </div>
+    </div>
+  </div>
+</div>
