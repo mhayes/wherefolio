@@ -63,6 +63,7 @@ module Wherefolio
     config.assets.version = '1.0'
     
     config.generators do |g|
+      g.test_framework nil, :fixture_replacement => nil
       g.stylesheets = false
       g.javascripts = false
     end

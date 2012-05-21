@@ -4,7 +4,8 @@ class SessionsController < ApplicationController
     @user.update_attributes({
       twitter_nickname: request.env["omniauth.auth"]["info"]["nickname"],
       twitter_name: request.env["omniauth.auth"]["info"]["name"],
-      twitter_image: request.env["omniauth.auth"]["info"]["image"]
+      twitter_image: request.env["omniauth.auth"]["info"]["image"],
+      twitter_location: request.env["omniauth.auth"]["info"]["location"]
     })
     session[:user_id] = @user.id
     redirect_to root_path, notice: t(:signed_in, name: @user.twitter_name.split.first)

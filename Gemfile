@@ -25,6 +25,18 @@ group :development do
   gem 'capistrano'
   gem 'capistrano-ext'
   gem 'debugger'
+  gem 'quiet_assets'
+  gem 'thin'
+end
+
+gem 'factory_girl_rails', '~> 3.2.0', :group => [:development, :test]
+
+group :test do
+  gem 'minitest-spec-rails', '~> 3.0.1'
+  gem 'capybara_minitest_spec', '~> 0.2.1'
+  gem 'capybara', '~> 1.1.2'
+  gem 'poltergeist', '~> 0.6.0'
+  gem 'launchy'
 end
 
 group :production do
