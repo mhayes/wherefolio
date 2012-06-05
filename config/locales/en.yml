@@ -5,6 +5,7 @@ en:
   app_name: "wherefolio"
   sign_in: "Sign In"
   sign_out: "Sign Out"
+  account: "Account"
   access_denied: "You're not authorized to view that page"
   signed_out: "You've been signed out"
   signed_in: "Thanks for signing in %{name}!"
