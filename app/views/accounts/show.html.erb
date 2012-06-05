@@ -1,8 +1,17 @@
 <div class="container">
   <div class="row">
     <div class="span12">
-      <h2>Account</h2>
+      <h2>Your Account</h2>
       <p>Details about the account will be placed here.</p>
+      
+      <div class="well">
+      <%= form_for current_account, url: account_path, method: :put do |f| %>
+        <%= f.label :name %>
+        <%= f.text_field :name %>
+        <hr />
+        <button type="submit" class="btn btn-primary">Update</button>
+      <% end %>
+      </div>
     </div>
   </div>
 </div>

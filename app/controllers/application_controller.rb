@@ -1,6 +1,6 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery
-  rescue_from Exceptions::AccessDenied, :with => :access_denied
+  rescue_from Exceptions::AccessDenied, with: :access_denied
 
 protected
   def access_denied
@@ -12,6 +12,11 @@ private
     @user ||= User.find(session[:user_id]) if session[:user_id]
   end
   helper_method :current_user
+  
+  def current_account
+    @account ||= current_user.account || current_user.create_account
+  end
+  helper_method :current_account
   
   def user_signed_in?
     !!current_user

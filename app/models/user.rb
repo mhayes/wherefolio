@@ -12,4 +12,5 @@ class User
   field :coordinates, type: Array
   
   alias :name :twitter_name
+  has_one :account
 end
