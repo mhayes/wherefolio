@@ -37,6 +37,7 @@ group :test do
   gem 'capybara', '~> 1.1.2'
   gem 'poltergeist', '~> 0.6.0'
   gem 'launchy'
+  gem 'tork', '~> 18.2.0'
 end
 
 group :production do
