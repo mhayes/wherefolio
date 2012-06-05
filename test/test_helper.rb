@@ -8,7 +8,7 @@ class IntegrationTest < ActiveSupport::TestCase
   include Rails.application.routes.url_helpers
   include Capybara::DSL
   
-  Capybara.current_driver = :poltergeist
+  # Capybara.current_driver = :poltergeist
   teardown do
     ActionMailer::Base.deliveries = []
   end
