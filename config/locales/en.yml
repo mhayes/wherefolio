@@ -9,3 +9,4 @@ en:
   access_denied: "You're not authorized to view that page"
   signed_out: "You've been signed out"
   signed_in: "Thanks for signing in %{name}!"
+  update_account_success: "Successfully updated your account"

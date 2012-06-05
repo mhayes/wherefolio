@@ -1,0 +1,25 @@
+<% if flash[:notice] %>
+<div class="container">
+  <div class="row">
+    <div class="span12">
+      <div class="alert alert-success">
+        <button class="close" data-dismiss="alert">×</button>
+        <strong>Notice:</strong> <%= flash[:notice] %>
+      </div>
+    </div>
+  </div>
+</div>
+<% end %>
+
+<% if flash[:alert] %>
+<div class="container">
+  <div class="row">
+    <div class="span12">
+      <div class="alert alert-error">
+        <button class="close" data-dismiss="alert">×</button>
+        <strong>Warning!</strong> <%= flash[:alert] %>
+      </div>
+    </div>
+  </div>
+</div>
+<% end %>

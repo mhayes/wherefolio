@@ -17,7 +17,7 @@ set :scm, "git"
 set :use_sudo, false
 set :user, "deployer"
 
-set :unicorn_binary, "/usr/bin/unicorn"
+set :unicorn_binary, "bundle exec unicorn"
 set :unicorn_config, "#{current_path}/config/unicorn.rb"
 set :unicorn_pid, "/tmp/unicorn.wherefolio.pid"
 
@@ -51,6 +51,7 @@ namespace :deploy do
     run "#{try_sudo} kill -s USR2 `cat #{unicorn_pid}`"
   end
   task :restart, :roles => :app, :except => { :no_release => true } do
-    reload
+    stop
+    start
   end
 end
