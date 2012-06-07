@@ -27,7 +27,6 @@ set :unicorn_config, "config/unicorn.rb"
 set :unicorn_pid, "/tmp/unicorn.wherefolio.pid"
 
 before "deploy:assets:precompile", "deploy:link_config_files"
-after "deploy:restart", "delayed_job:restart"
 after "deploy:restart", "unicorn:reload"
 
 set :keep_releases, 3
