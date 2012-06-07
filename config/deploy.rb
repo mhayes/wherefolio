@@ -1,6 +1,5 @@
 RAILS_ROOT = File.expand_path(File.dirname(File.dirname(__FILE__)))
 
-require 'capistrano/ext/multistage'
 require "bundler/capistrano"
 
 # use local key for authentication
@@ -12,13 +11,19 @@ set :deploy_to, "/var/www/wherefolio"
 set :repository,  "git@github.com:mhayes/wherefolio.git"
 set :branch, "master"
 
+server = "wherefolio.com"
+role :app, server
+role :web, server
+role :db, server, :primary => true
+set :rails_env, 'production'
+
 set :deploy_via, :remote_cache
 set :scm, "git"
 set :use_sudo, false
-set :user, "deployer"
+set :user, "wherefolio"
 
 set :unicorn_binary, "bundle exec unicorn"
-set :unicorn_config, "#{current_path}/config/unicorn.rb"
+set :unicorn_config, "config/unicorn.rb"
 set :unicorn_pid, "/tmp/unicorn.wherefolio.pid"
 
 before "deploy:assets:precompile", "deploy:link_config_files"
