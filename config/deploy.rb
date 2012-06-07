@@ -27,7 +27,8 @@ set :unicorn_config, "config/unicorn.rb"
 set :unicorn_pid, "/tmp/unicorn.wherefolio.pid"
 
 before "deploy:assets:precompile", "deploy:link_config_files"
-after "deploy:update_code", "deploy:link_config_files"
+after "deploy:restart", "delayed_job:restart"
+after "deploy:restart", "unicorn:reload"
 
 set :keep_releases, 3
 after "deploy:update", "deploy:cleanup"
@@ -43,20 +44,41 @@ namespace :deploy do
     
     run "ln -nfs #{shared_path}/config/unicorn.rb #{release_path}/config/unicorn.rb"
   end
+end
+
+namespace :unicorn do
   task :start, :roles => :app, :except => { :no_release => true } do 
-    run "cd #{current_path} && #{try_sudo} #{unicorn_binary} -c #{unicorn_config} -E #{rails_env} -D"
+    run "cd #{current_path} && #{unicorn_binary} -c #{unicorn_config} -E #{rails_env} -D"
   end
   task :stop, :roles => :app, :except => { :no_release => true } do 
-    run "#{try_sudo} kill `cat #{unicorn_pid}`"
+    run "kill `cat #{unicorn_pid}`"
   end
   task :graceful_stop, :roles => :app, :except => { :no_release => true } do
-    run "#{try_sudo} kill -s QUIT `cat #{unicorn_pid}`"
+    run "kill -s QUIT `cat #{unicorn_pid}`"
   end
   task :reload, :roles => :app, :except => { :no_release => true } do
-    run "#{try_sudo} kill -s USR2 `cat #{unicorn_pid}`"
+    run "kill -s USR2 `cat #{unicorn_pid}`"
   end
   task :restart, :roles => :app, :except => { :no_release => true } do
     stop
     start
   end
 end
+
+# namespace :delayed_job do
+#   desc "Start delayed_job"
+#   task :start do
+#     run "RAILS_ENV=#{rails_env} #{current_path}/script/delayed_job start"
+#   end
+#   
+#   desc "Stop delayed_job"
+#   task :stop do
+#     run "RAILS_ENV=#{rails_env} #{current_path}/script/delayed_job stop"
+#   end
+#   
+#   desc "Restart delayed_job"
+#   task :restart do
+#     stop
+#     start
+#   end
+# end
