@@ -3,4 +3,11 @@ class IndexController < ApplicationController
   
   def home
   end
+  
+  def boom
+  end
+  
+  def boom2
+    raise "boom error!"
+  end
 end

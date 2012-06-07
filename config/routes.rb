@@ -9,4 +9,5 @@ Wherefolio::Application.routes.draw do
   match "/signout" => "sessions#destroy", as: :signout
   
   get "/boom" => "index#boom"
+  get "/boom2" => "index#boom2"
 end
