@@ -41,4 +41,5 @@ end
 
 group :production do
   gem 'unicorn'
+  gem 'exception_notification'
 end
