@@ -22,10 +22,6 @@ set :scm, "git"
 set :use_sudo, false
 set :user, "wherefolio"
 
-set :unicorn_binary, "bundle exec unicorn"
-set :unicorn_config, "config/unicorn.rb"
-set :unicorn_pid, "/tmp/unicorn.wherefolio.pid"
-
 before "deploy:assets:precompile", "deploy:link_config_files"
 after "deploy:restart", "unicorn:reload"
 
@@ -45,6 +41,9 @@ namespace :deploy do
   end
 end
 
+set :unicorn_binary, "bundle exec unicorn"
+set :unicorn_config, "config/unicorn.rb"
+set :unicorn_pid, "/tmp/unicorn.wherefolio.pid"
 namespace :unicorn do
   task :start, :roles => :app, :except => { :no_release => true } do 
     run "cd #{current_path} && #{unicorn_binary} -c #{unicorn_config} -E #{rails_env} -D"
