@@ -1,2 +1,6 @@
-Use this README file to introduce your application and point to useful places in the API for learning more.
-Run "rake doc:app" to generate API documentation for your models, controllers, helpers, and libraries.
+Geocoding API
+http://wiki.openstreetmap.org/wiki/Nominatim
+
+Example Reverse Geocoding Query
+http://nominatim.openstreetmap.org/search/55 n 3rd st, campbell, ca?format=json
+- Can be used to send spatial data to mongo and do lookup based on LAT/LONG
