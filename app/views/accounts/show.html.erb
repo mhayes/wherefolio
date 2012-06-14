@@ -8,6 +8,11 @@
       <%= form_for current_account, url: account_path, method: :put do |f| %>
         <%= f.label :name %>
         <%= f.text_field :name %>
+        <br />
+        
+        <%= image_tag current_account.logo.square.url if current_account.logo? %>
+        <%= f.file_field :logo %>
+        <%= f.hidden_field :logo_cache %>
         <hr />
         <button type="submit" class="btn btn-primary">Update</button>
       <% end %>

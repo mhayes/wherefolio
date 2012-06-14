@@ -17,3 +17,4 @@ config/*.yml
 /test/**/*.log
 /test/**/**/*.log
 *.DS_Store
+/public/logos/*

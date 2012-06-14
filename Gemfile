@@ -4,12 +4,13 @@ gem 'rails', '3.2.3'
 gem 'jquery-rails'
 gem 'mongoid', '~> 2.4'
 gem 'bson_ext', '~> 1.5'
+gem 'carrierwave-mongoid', require: 'carrierwave/mongoid'
+gem 'mini_magick'
 
-# OmniAuth
+# External APIs
 gem 'omniauth', '~> 1.1.0'
 gem 'omniauth-twitter'
-
-# Geocoding
+gem 'fog', '~> 1.3.1'
 gem 'geocoder', '~> 1.1.1'
 # gem 'mongoid_spatial', '~> 0.2.16'
 

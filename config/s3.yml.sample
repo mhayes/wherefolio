@@ -1,0 +1,15 @@
+defaults: &defaults
+  access_key_id: secret
+  secret_access_key: secret
+  
+development:
+  <<: *defaults
+  bucket: dev.s3.wherefolio.com
+
+test:
+  <<: *defaults
+  bucket: test.s3.wherefolio.com
+
+production:
+  <<: *defaults
+  bucket: s3.wherefolio.com
