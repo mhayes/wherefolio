@@ -11,7 +11,7 @@ gem 'mini_magick'
 gem 'omniauth', '~> 1.1.0'
 gem 'omniauth-twitter'
 gem 'fog', '~> 1.3.1'
-gem 'geocoder', '~> 1.1.1'
+gem 'geocoder', '~> 1.1.2'
 # gem 'mongoid_spatial', '~> 0.2.16'
 
 group :assets do
