@@ -5,13 +5,6 @@ class LogoUploader < CarrierWave::Uploader::Base
     process resize_to_fill:[100,100]
   end
   
-  # process resize_to_fit: [2048, nil]
-  # 
-  # version :large {process resize_to_fill:[1024,nil]}
-  # version :medium, from_version: :large {process resize_to_fill:[800,nil]}
-  # version :small, from_version: :medium {process resize_to_fill:[400,nil]}
-  # version :square, from_version: :small {process resize_to_fit:[200,200]}
-  
   def store_dir
     'logos'
   end

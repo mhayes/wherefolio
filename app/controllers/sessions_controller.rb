@@ -8,7 +8,7 @@ class SessionsController < ApplicationController
       twitter_location: request.env["omniauth.auth"]["info"]["location"]
     })
     session[:user_id] = @user.id
-    redirect_to root_path, notice: t(:signed_in, name: @user.twitter_name.split.first)
+    redirect_to projects_path, notice: t(:signed_in, name: @user.twitter_name.split.first)
   end
   
   def failure

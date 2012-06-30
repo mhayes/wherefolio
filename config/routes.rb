@@ -2,6 +2,7 @@ Wherefolio::Application.routes.draw do
   root :to => "index#home"
   
   resource :account, only: [:show, :update]
+  resources :projects, only: [:new, :create, :show, :index]
   
   # User Authentication
   match "/auth/twitter/callback" => "sessions#create"
