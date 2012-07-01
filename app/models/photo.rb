@@ -7,4 +7,5 @@ class Photo
   field :position, type: Integer, default: 0
   attr_accessible :image, :image_cache, :name, :project_id, :position
   scope :ordered, order_by(:position, :asc)
+  validates_presence_of :image
 end
