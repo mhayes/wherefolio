@@ -16,7 +16,7 @@ class User
 
 private
   def update_coordinates
-    if address.present? && address_changed?
+    if twitter_location.present? && twitter_location_changed?
       geocode
     end
   end
