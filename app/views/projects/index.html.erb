@@ -1,24 +1,31 @@
 <div class="container">
   <div class="row">
     <div class="span12">
-      <div id="map"></div>
-      <p>Projects could be listed here in a grid.</p>
+      <%= link_to "New Project", new_project_path, 
+        class:"btn btn-primary pull-right", style:"margin-bottom:5px;" %>
     </div>
   </div>
   
-  <% if false %>
   <div class="row">
     <div class="span12">
-      <h2>Projects</h2>
-      <%= link_to "New Project", new_project_path, class: "btn btn-primary"%>
-      <ul>
+      <div id="map"></div>
+    </div>
+  </div>
+  
+  <div class="row">
+    <div class="span12">
+      <ul class="thumbnails">
         <% @projects.each do |project| %>
-        <li><%= link_to project.name, project %></li>
+        <li class="span2">
+          <%= link_to project, class:"thumbnail" do %>
+            <%= image_tag project.photos.first.image.thumbnail.url %>
+            <h5><%= project.name %></h5>
+          <% end %>
+        </li>
         <% end %>
       </ul>
     </div>
   </div>
-  <% end %>
 </div>
 
 <% content_for :javascripts do %>
