@@ -1,8 +1,43 @@
-<div class="container">
+<div id="main" class="container">
   <div class="row">
     <div class="span12">
+      <ul class="breadcrumb">
+        <li><%= link_to "Projects", projects_path %> <span class="divider">/</span></li>
+        <li><%= link_to @project.name, @project %></li>
+      </ul>
+      
+      
       <h2>Project: <%= @project.name %></h2>
-      <p>Created for fun!</p>
+      <p>Now start uploading some projects to describe your project.</p>
+      
+      <div id="uploadButton" 
+          data-project-id="<%= @project.id %>"
+          data-upload-path="<%= project_photos_path(@project) %>">Select Files</div>
+      <div id="uploadQueue">
+        <% if false %>
+        <div class="uploadifive-queue-item error" id="uploadifive-uploadButton-file-0">                    
+          <a class="close" href="#">X</a>
+          <div>
+            <span class="filename">after_conversion_imagescience.jpeg</span>
+            <span class="fileinfo"> - 404 Error</span>
+          </div>
+        </div>
+        <% end %>
+      </div>
+      
+      <hr />
+      <ul class="thumbnails">
+        <%= render partial: "photo_thumbnail", 
+          collection: @project.photos, 
+          as: :photo %>
+      </ul>
+      
     </div>
   </div>
 </div>
+
+<% content_for :javascripts do %>
+<script type="text/javascript">
+  var view = new Wherefolio.Views.ProjectsShow({el:"#main"});
+</script>
+<% end %>

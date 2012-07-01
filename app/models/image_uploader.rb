@@ -1,20 +1,25 @@
 class ImageUploader < CarrierWave::Uploader::Base
+  include CarrierWave::MiniMagick
   process resize_to_limit: [2048, 2048]
-    
+  
   version :large do
-    process resize_to_fill:[1024,nil]
+    process resize_to_limit:[1024,nil]
   end
   
   version :medium, from_version: :large do
-    process resize_to_fill:[800,nil]
+    process resize_to_limit:[800,nil]
   end
   
   version :small, from_version: :medium do
-    process resize_to_fill:[400,nil]
+    process resize_to_limit:[400,nil]
+  end
+  
+  version :thumbnail, from_version: :small do
+    process resize_to_fill:[160,120]
   end
   
   version :square, from_version: :small do
-    process resize_to_fit:[200,200]
+    process resize_to_fill:[100,100]
   end
   
   def store_dir

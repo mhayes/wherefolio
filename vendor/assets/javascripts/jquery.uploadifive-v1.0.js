@@ -543,12 +543,7 @@ Released under the UploadiFive Standard License <http://www.uploadify.com/upload
 
                     // Style the button wrapper
                     $data.button.css({
-                        'height'      : settings.height,
-                        'line-height' : settings.height + 'px', 
-                        'overflow'    : 'hidden',
-                        'position'    : 'relative',
-                        'text-align'  : 'center', 
-                        'width'       : settings.width
+                        'position'    : 'relative'
                     });
 
                     // Insert the button above the file input

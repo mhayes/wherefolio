@@ -2,9 +2,10 @@
   <div class="row">
     <div class="span12">
       <h2>Projects</h2>
+      <%= link_to "New Project", new_project_path, class: "btn btn-primary"%>
       <ul>
         <% @projects.each do |project| %>
-        <li><%= project.name %></li>
+        <li><%= link_to project.name, project %></li>
         <% end %>
       </ul>
     </div>

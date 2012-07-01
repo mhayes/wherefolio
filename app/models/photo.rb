@@ -1,6 +1,7 @@
 class Photo
   include Mongoid::Document
-  embedded_in :project
+  belongs_to :project
   mount_uploader :image, ImageUploader
-  attr_accessible :image, :image_cache
+  field :name
+  attr_accessible :image, :image_cache, :name, :project_id
 end
