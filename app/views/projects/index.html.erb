@@ -18,7 +18,9 @@
         <% @projects.each do |project| %>
         <li class="span2">
           <%= link_to project, class:"thumbnail" do %>
+            <% if !project.photos.empty? %>
             <%= image_tag project.photos.first.image.thumbnail.url %>
+            <% end %>
             <h5><%= project.name %></h5>
           <% end %>
         </li>
