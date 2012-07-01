@@ -6,7 +6,7 @@ Wherefolio.Views.ProjectsShow = Backbone.View.extend({
   },
   
   initializeUploader: function() {
-    _.bindAll(this, 'uploadComplete');
+    _.bindAll(this, 'onUploadFile', 'onUploadComplete', 'onQueueComplete');
     var uploadBtn = this.$('#uploadButton');
     uploadBtn.uploadifive({
       buttonClass: 'btn',
@@ -16,7 +16,9 @@ Wherefolio.Views.ProjectsShow = Backbone.View.extend({
         authenticity_token: $('meta[name=csrf-token]').attr('content'),
         '_http_accept': 'application/javascript'
       },
-      onUploadComplete: this.uploadComplete
+      onUploadFile: this.onUploadFile,
+      onUploadComplete: this.onUploadComplete,
+      onQueueComplete: this.onQueueComplete
     });
   },
   
@@ -25,6 +27,10 @@ Wherefolio.Views.ProjectsShow = Backbone.View.extend({
     this.$('#uploadedPhotos').sortable({
       update: this.sortUpdate
     });
+  },
+  
+  events: {
+    'ajax:success .js-delete': 'destroyPhoto'
   },
   
   sortUpdate: function(event, ui) {
@@ -37,7 +43,19 @@ Wherefolio.Views.ProjectsShow = Backbone.View.extend({
     });
   },
   
-  uploadComplete: function(file, partial) {
+  onUploadFile: function(file) {
+    // queue up spinner
+  },
+  
+  onUploadComplete: function(file, partial) {
     this.$('#uploadedPhotos').append(partial);
+  },
+  
+  onQueueComplete: function(queueData) {
+    this.$('.progress').removeClass('active');
+  },
+  
+  destroyPhoto: function(event) {
+    $(event.currentTarget).closest('li.photo').fadeOut();
   }
 });

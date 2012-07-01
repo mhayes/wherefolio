@@ -6,13 +6,13 @@
         <li><%= link_to @project.name, @project %></li>
       </ul>
       
-      
       <h2>Project: <%= @project.name %></h2>
       <p>Now start uploading some projects to describe your project.</p>
       
       <div id="uploadButton" 
           data-project-id="<%= @project.id %>"
           data-upload-path="<%= project_photos_path(@project) %>">Select Files</div>
+      
       <div id="uploadQueue">
         <% if false %>
         <div class="uploadifive-queue-item error" id="uploadifive-uploadButton-file-0">                    

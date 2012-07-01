@@ -2,4 +2,8 @@
   <a href="#" class="thumbnail">
     <%= image_tag photo.image.thumbnail.url %>
   </a>
+  <%= link_to "X", project_photo_path(photo.project, photo), 
+    method: :delete, 
+    remote: true, 
+    class:"close js-delete" %>
 <% end %>

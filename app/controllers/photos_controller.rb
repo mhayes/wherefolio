@@ -17,4 +17,10 @@ class PhotosController < ApplicationController
     @project.save
     head :ok
   end
+  
+  def destroy
+    @project = Project.find(params[:project_id])
+    @project.photos.find(params[:id]).destroy
+    head :ok
+  end
 end
