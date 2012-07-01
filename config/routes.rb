@@ -3,7 +3,11 @@ Wherefolio::Application.routes.draw do
   
   resource :account, only: [:show, :update]
   resources :projects, only: [:new, :create, :show, :index] do
-    resources :photos, :only => [:create]
+    resources :photos, :only => [:create] do
+      collection do
+        post :sort
+      end
+    end
   end
   
   # User Authentication

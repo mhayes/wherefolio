@@ -26,9 +26,11 @@
       </div>
       
       <hr />
-      <ul class="thumbnails">
+      <ul id="uploadedPhotos"
+          class="thumbnails"
+          data-sort-path="<%= sort_project_photos_path(@project) %>">
         <%= render partial: "photo_thumbnail", 
-          collection: @project.photos, 
+          collection: @photos, 
           as: :photo %>
       </ul>
       

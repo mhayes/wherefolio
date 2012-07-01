@@ -1,5 +1,5 @@
-<li class="span2">
+<%= content_tag_for(:li, photo, class:"span2") do %>
   <a href="#" class="thumbnail">
     <%= image_tag photo.image.thumbnail.url %>
   </a>
-</li>
+<% end %>

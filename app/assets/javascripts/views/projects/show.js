@@ -1,5 +1,11 @@
 Wherefolio.Views.ProjectsShow = Backbone.View.extend({
   initialize: function() {
+    _.bindAll(this, 'initializeUploader', 'initializeSortable');
+    this.initializeUploader();
+    this.initializeSortable();
+  },
+  
+  initializeUploader: function() {
     _.bindAll(this, 'uploadComplete');
     var uploadBtn = this.$('#uploadButton');
     uploadBtn.uploadifive({
@@ -14,7 +20,24 @@ Wherefolio.Views.ProjectsShow = Backbone.View.extend({
     });
   },
   
+  initializeSortable: function() {
+    _.bindAll(this, 'sortUpdate');
+    this.$('#uploadedPhotos').sortable({
+      update: this.sortUpdate
+    });
+  },
+  
+  sortUpdate: function(event, ui) {
+    var photos = this.$('#uploadedPhotos').sortable('serialize');
+    $.ajax({
+      type: 'post',
+      url: this.$('#uploadedPhotos').data('sort-path'),
+      data: photos,
+      dataType: 'script'
+    });
+  },
+  
   uploadComplete: function(file, partial) {
-    this.$('ul.thumbnails').append(partial);
+    this.$('#uploadedPhotos').append(partial);
   }
 });
