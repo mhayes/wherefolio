@@ -1,6 +1,14 @@
 <div class="container">
   <div class="row">
     <div class="span12">
+      <div id="map"></div>
+      <p>Projects could be listed here in a grid.</p>
+    </div>
+  </div>
+  
+  <% if false %>
+  <div class="row">
+    <div class="span12">
       <h2>Projects</h2>
       <%= link_to "New Project", new_project_path, class: "btn btn-primary"%>
       <ul>
@@ -10,4 +18,29 @@
       </ul>
     </div>
   </div>
+  <% end %>
 </div>
+
+<% content_for :javascripts do %>
+<%= javascript_include_tag "http://openlayers.org/api/OpenLayers.js" %>
+<script type="text/javascript">
+  var init = function() {
+    var map = new OpenLayers.Map('map'),
+        wms = new OpenLayers.Layer.WMS(
+          "OpenLayers WMS",
+          "http://vmap0.tiles.osgeo.org/wms/vmap0",
+          {layers: 'basic'}
+        ),
+        vectorLayer = new OpenLayers.Layer.Vector("Overlay");
+        feature = new OpenLayers.Feature.Vector(
+          new OpenLayers.Geometry.Point(-121.954185282518, 37.2803465074717),
+          {some:'Campbell, CA'}
+        );
+    vectorLayer.addFeatures(feature);
+    map.addLayer(vectorLayer);
+    map.addLayers([wms]);
+    map.setCenter(new OpenLayers.LonLat(-121.954185282518, 37.2803465074717), 6);
+  };
+  init();
+</script>
+<% end %>
