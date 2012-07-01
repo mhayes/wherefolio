@@ -3,7 +3,7 @@ class Project
   include Mongoid::Timestamps
   include Geocoder::Model::Mongoid
   belongs_to :account
-  embeds_many :photos
+  embeds_many :photos, cascade_callbacks: true
   field :name, type: String
   field :address
   field :coordinates, type: Array

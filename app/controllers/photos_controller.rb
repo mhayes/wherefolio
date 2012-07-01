@@ -5,7 +5,7 @@ class PhotosController < ApplicationController
     @photo.image = params[:Filedata][0]
     @photo.name  = params[:Filedata][0].original_filename
     @photo.position = @project.photos.count
-    @photo.save
+    @project.save
     render partial: "projects/photo_thumbnail", locals: {photo: @photo}
   end
   
