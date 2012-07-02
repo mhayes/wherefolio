@@ -1,0 +1,19 @@
+<%= form_for @project do |f| %>
+<div class="modal hide" id="newProjectModal">
+  <div class="modal-header">
+    <button type="button" class="close" data-dismiss="modal">×</button>
+    <h3>Create a New Project</h3>
+  </div>
+  <div class="modal-body">
+    <%= f.label :name, "What do you want to call this project?" %>
+    <%= f.text_field :name, class:"span5", placeholder:"Golden Gate Bridge Repairs" %>
+    
+    <%= f.label :address, "Where was it located?" %>
+    <%= f.text_field :address, class:"span5", placeholder:"San Francisco, CA" %>
+  </div>
+  <div class="modal-footer">
+    <a href="#" class="btn" data-dismiss="modal">Close</a>
+    <button type="submit" class="btn btn-primary">Create Project</button>
+  </div>
+</div>
+<% end %>

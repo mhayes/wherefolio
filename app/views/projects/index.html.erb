@@ -1,14 +1,16 @@
-<div class="container">
+<div class="container" id="main">
   <div class="row">
     <div class="span12">
       <%= link_to "New Project", new_project_path, 
-        class:"btn btn-primary pull-right", style:"margin-bottom:5px;" %>
+        class:"btn btn-primary pull-right js-new-project", 
+        style:"margin-bottom:5px;" %>
     </div>
   </div>
   
   <div class="row">
     <div class="span12">
       <div id="map"></div>
+      <hr />
     </div>
   </div>
   
@@ -30,26 +32,11 @@
   </div>
 </div>
 
+<%= render "new_modal" %>
+
 <% content_for :javascripts do %>
 <%= javascript_include_tag "http://openlayers.org/api/OpenLayers.js" %>
 <script type="text/javascript">
-  var init = function() {
-    var map = new OpenLayers.Map('map'),
-        wms = new OpenLayers.Layer.WMS(
-          "OpenLayers WMS",
-          "http://vmap0.tiles.osgeo.org/wms/vmap0",
-          {layers: 'basic'}
-        ),
-        vectorLayer = new OpenLayers.Layer.Vector("Overlay");
-        feature = new OpenLayers.Feature.Vector(
-          new OpenLayers.Geometry.Point(-121.954185282518, 37.2803465074717),
-          {some:'Campbell, CA'}
-        );
-    vectorLayer.addFeatures(feature);
-    map.addLayer(vectorLayer);
-    map.addLayers([wms]);
-    map.setCenter(new OpenLayers.LonLat(-121.954185282518, 37.2803465074717), 6);
-  };
-  init();
+  var view = new Wherefolio.Views.ProjectsIndex({el:"#main"});
 </script>
 <% end %>

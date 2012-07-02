@@ -1,17 +1,16 @@
 <div id="main" class="container">
   <div class="row">
-    <div class="span12">
-      <ul class="breadcrumb">
-        <li><%= link_to "Projects", projects_path %> <span class="divider">/</span></li>
-        <li><%= link_to @project.name, @project %></li>
-      </ul>
-      
-      <h2>Project: <%= @project.name %></h2>
-      <p>Now start uploading some projects to describe your project.</p>
+    <div class="span4">
+      <%= link_to projects_path do %>
+      &larr; Projects
+      <% end %>
+      <h2><%= @project.name %></h2>
+      <em><%= pluralize @project.photos.count, "photo" %></em>
+      <hr />
       
       <div id="uploadButton" 
           data-project-id="<%= @project.id %>"
-          data-upload-path="<%= project_photos_path(@project) %>">Select Files</div>
+          data-upload-url="<%= project_photos_path(@project) %>">Add Photos</div>
       
       <div id="uploadQueue">
         <% if false %>
@@ -23,17 +22,16 @@
           </div>
         </div>
         <% end %>
-      </div>
-      
-      <hr />
+      </div>      
+    </div>
+    <div class="span8">
       <ul id="uploadedPhotos"
           class="thumbnails"
-          data-sort-path="<%= sort_project_photos_path(@project) %>">
+          data-sort-url="<%= sort_project_photos_path(@project) %>">
         <%= render partial: "photo_thumbnail", 
           collection: @photos, 
           as: :photo %>
       </ul>
-      
     </div>
   </div>
 </div>
