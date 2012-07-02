@@ -19,7 +19,7 @@
       <ul class="thumbnails">
         <% @projects.each do |project| %>
         <li class="span2">
-          <%= link_to project, class:"thumbnail" do %>
+          <%= link_to edit_project_path(project), class:"thumbnail" do %>
             <% if !project.photos.empty? %>
             <%= image_tag project.photos.first.image.thumbnail.url %>
             <% end %>

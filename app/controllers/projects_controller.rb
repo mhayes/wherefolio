@@ -10,13 +10,13 @@ class ProjectsController < ApplicationController
     @project         = Project.new(params[:project])
     @project.account = current_account
     if @project.save
-      redirect_to @project
+      redirect_to edit_project_path(@project)
     else
       render action: :new
     end
   end
   
-  def show
+  def edit
     @project = Project.find(params[:id])
     @photos  = @project.photos.ordered
   end

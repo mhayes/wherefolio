@@ -1,4 +1,4 @@
-class Wherefolio.Views.ProjectsShow extends Backbone.View
+class Wherefolio.Views.ProjectsEdit extends Backbone.View
   initialize: ->
     _.bindAll @, "initializeUploader", "initializeSortable"
     @initializeUploader()
