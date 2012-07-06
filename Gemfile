@@ -19,7 +19,6 @@ group :assets do
   gem 'coffee-rails', '~> 3.2.1'
   gem 'therubyracer', :platform => :ruby
   gem 'uglifier', '>= 1.0.3'
-  gem 'twitter-bootstrap-rails'
   gem 'backbone-on-rails'
 end
 
@@ -27,7 +26,6 @@ group :development do
   gem 'capistrano'
   gem 'debugger'
   gem 'quiet_assets'
-  gem 'thin'
 end
 
 gem 'factory_girl_rails', '~> 3.2.0', :group => [:development, :test]

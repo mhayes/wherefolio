@@ -1,7 +1,7 @@
 //= require jquery
 //= require jquery-ui
 //= require jquery_ujs
-//= require twitter/bootstrap
+//= require foundation
 //= require jquery.uploadifive-v1.0
 //= require underscore
 //= require backbone

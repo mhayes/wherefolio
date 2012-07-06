@@ -1,6 +1,7 @@
 /*
  *= require_self
- *= require bootstrap_and_overrides
+ *= require foundation
+ *= require foundation_overrides
  *= require uploadifive
  *= require wherefolio
 */
