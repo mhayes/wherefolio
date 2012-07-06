@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<!-- paulirish.com/2008/conditional-stylesheets-vs-css-hacks-answer-neither/ -->
+<!--[if lt IE 7]> <html class="no-js lt-ie9 lt-ie8 lt-ie7" lang="en"> <![endif]-->
+<!--[if IE 7]><html class="no-js lt-ie9 lt-ie8" lang="en"><![endif]-->
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en"><![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en"><!--<![endif]-->
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width" />
+    <title><%= content_for?(:title) ? yield(:title) : "wherefolio" %></title>
+    <%= csrf_meta_tags %>
+    
+    <%= javascript_include_tag "modernizr.foundation.js" %>
+
+    <!-- IE Fix for HTML5 Tags -->
+    <!--[if lt IE 9]>
+    <%= javascript_include_tag "http://html5shiv.googlecode.com/svn/trunk/html5.js" %>
+    <![endif]-->
+
+    <%= stylesheet_link_tag "application", :media => "all" %>
+    <%= render "favicons" %>
+    <%= render "google_analytics" %>
+  </head>
+  <body class="static">
+    <%= render "flash_messages" %>
+    <%= yield %>
+    <%= javascript_include_tag "application" %>
+    <%= yield :javascripts %>
+  </body>
+</html>

@@ -1,0 +1,32 @@
+<div class="row">
+  <div class="three columns">
+    <h2>wherefolio</h2>
+    <p>Start uploading your photos</p>
+    <%= link_to "Add Photos", "/static/upload_photos",
+      class:"medium secondary button" %>
+    <hr />
+    <form>
+      <input type="text" placeholder="Name...">
+      <textarea placeholder="Description..."></textarea>
+      <button type="submit" class="medium button">
+        Save
+      </button>
+    </form>
+  </div>
+  <div class="nine columns">
+    
+    <div class="thumbnails">
+      <% 7.times do |i| %>
+      <div class="three columns">
+        <div class="thumbnail">
+          <div class="image-container">
+            <img src="//placehold.it/250x400">
+          </div>
+          <h6>Thumbnail <%= i %></h6>
+        </div>
+      </div>
+      <% end %>
+    </div>
+    
+  </div>
+</div>
