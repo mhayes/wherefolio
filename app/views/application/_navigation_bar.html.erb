@@ -1,3 +1,13 @@
+<ul class="nav-bar">
+  <% if user_signed_in? %>
+  <li><%= link_to t(:account), account_path %></li>
+  <li><%= link_to t(:sign_out), signout_path %></li>
+  <% else %>
+  <li><%= link_to t(:sign_in), "/auth/twitter" %></li>
+  <% end %>
+</ul>
+
+<% if false %>
 <div class="navbar navbar-fixed-top">
   <div class="navbar-inner">
     <div class="container">
@@ -34,3 +44,4 @@
     </div>
   </div>
 </div>
+<% end %>

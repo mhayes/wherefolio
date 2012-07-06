@@ -1,24 +1,44 @@
 <div class="container" id="main">
+  <% if false %>
   <div class="row">
-    <div class="span12">
+    <div class="twelve columns">
       <a href="#"
-        class="btn btn-primary pull-right js-new-project"
+        class="small button js-new-project"
         style="margin-bottom:5px;">New Project</a>
     </div>
   </div>
   
   <div class="row">
-    <div class="span12">
+    <div class="twelve columns">
       <div id="map"></div>
       <hr />
     </div>
   </div>
+  <% end %>
   
   <div class="row">
-    <div class="span12">
+    <div class="twelve columns">
+      <div class="thumbnails">
+        <% 2.times do %>
+        <div class="row">
+          <% 6.times do %>
+          <div class="two columns">
+            <div class="thumbnail">THUMBNAIL</div>
+          </div>
+          <% end %>
+        </div>
+        <% end %>
+      </ul>
+    </div>
+  </div>
+  
+  <% if false %>
+  <hr />
+  <div class="row">
+    <div class="twelve columns">
       <ul class="thumbnails">
         <% @projects.each do |project| %>
-        <li class="span2">
+        <li>
           <%= link_to edit_project_path(project), class:"thumbnail" do %>
             <% if !project.photos.empty? %>
             <%= image_tag project.photos.first.image.thumbnail.url %>
@@ -30,6 +50,7 @@
       </ul>
     </div>
   </div>
+  <% end %>
 </div>
 
 <%= render "new_modal" %>
